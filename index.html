@@ -60,7 +60,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2025-02-12 01:14:42',
+  postUpdate: '2025-02-13 17:54:55',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -216,9 +216,9 @@ if (true) {
       </a>
     </div>
     
-    <div class="catalog-list-item" id="/categories/闲聊杂谈/">
-      <a href="/categories/闲聊杂谈/">
-        闲聊杂谈
+    <div class="catalog-list-item" id="/categories/面试攻略/">
+      <a href="/categories/面试攻略/">
+        面试攻略
       </a>
     </div>
     
@@ -228,9 +228,9 @@ if (true) {
       </a>
     </div>
     
-    <div class="catalog-list-item" id="/categories/面试攻略/">
-      <a href="/categories/面试攻略/">
-        面试攻略
+    <div class="catalog-list-item" id="/categories/闲聊杂谈/">
+      <a href="/categories/闲聊杂谈/">
+        闲聊杂谈
       </a>
     </div>
     </div><div class="category-bar-next" id="category-bar-next" onclick="anzhiyu.scrollCategoryBarToRight()"><i class="anzhiyufont anzhiyu-icon-angle-double-right"></i></div><a class="catalog-more" href="/categories/">更多</a></div></div></div><div class="recent-post-item lastestpost-item" onclick="pjax.loadUrl('/2025/02/11/%E6%8C%91%E6%88%98/')"><div class="post_cover left"><a href="/2025/02/11/%E6%8C%91%E6%88%98/" title="面试：最有挑战的困难" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&amp;w=2574&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试：最有挑战的困难" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">面试攻略</div><span class="newPost">最新</span><a class="unvisited-post" href="/2025/02/11/%E6%8C%91%E6%88%98/" title="面试：最有挑战的困难">未读</a></div><a class="article-title" href="/2025/02/11/%E6%8C%91%E6%88%98/" title="面试：最有挑战的困难">面试：最有挑战的困难</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2025-02-11T03:00:00.000Z" title="发表于 2025-02-11 11:00:00" time="2025-02-11 11:00:00">2025-02-11</time><time class="time_hidden" datetime="2025-02-11T11:33:31.141Z" title="更新于 2025-02-11 19:33:31" time="2025-02-11 19:33:31">2025-02-11</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>面试</span></a><a class="article-meta__tags" href="/tags/%E5%AE%9E%E4%B9%A0/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>实习</span></a></span></div><div class="content">问题描述：你是互联网公司的数据分析专家。在一次互联网公司周会中，你所负责的数据周报部分，30s接起率下降很多，明显属于异常情况。这个是你负责团队的核心指标，老板在周会上得知非常生气。你意识到，30s接起率下降的原因是隔壁运营团队上周重点关注提升GMV的影响，运营动作将订单一直给高客单价的商户，但是你的老板显然忘记了这个问题，你应该怎么在会上解答？
@@ -436,7 +436,7 @@ queueMicrotask(() => {
     getScript("/js/anzhiyu/people.js", {defer:true})
   });
 }</script><input type="hidden" name="page-type" id="page-type" value="anzhiyu"></div><script>window.addEventListener('load', () => {
-  const changeContent = (content) => {
+  const changeContent = content => {
     if (content === '') return content
 
     content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
@@ -450,39 +450,6 @@ queueMicrotask(() => {
     return content
   }
 
-  const getComment = () => {
-    const runTwikoo = () => {
-      twikoo.getRecentComments({
-        envId: '',
-        region: '',
-        pageSize: 6,
-        includeReply: true
-      }).then(function (res) {
-        const twikooArray = res.map(e => {
-          return {
-            'content': changeContent(e.comment),
-            'avatar': e.avatar,
-            'nick': e.nick,
-            'url': e.url + '#' + e.id,
-            'date': new Date(e.created).toISOString()
-          }
-        })
-
-        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
-        generateHtml(twikooArray)
-      }).catch(function (err) {
-        const $dom = document.querySelector('#card-newest-comments .aside-list')
-        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
-      })
-    }
-
-    if (typeof twikoo === 'object') {
-      runTwikoo()
-    } else {
-      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
-    }
-  }
-
   const generateHtml = array => {
     let result = ''
 
@@ -492,13 +459,13 @@ queueMicrotask(() => {
 
         if (true) {
           const name = 'data-lazy-src'
-          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
         }
-        
+
         result += `<div class='content'>
         <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
-        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
-        </div>`
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
       }
     } else {
       result += '没有评论'
@@ -510,9 +477,31 @@ queueMicrotask(() => {
     window.pjax && window.pjax.refresh($dom)
   }
 
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://waline-blog-fan99.vercel.app/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray)
+    } catch (err) {
+      console.error(err)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
   const newestCommentInit = () => {
     if (document.querySelector('#card-newest-comments .aside-list')) {
-      const data = saveToLocal.get('twikoo-newest-comments')
+      const data = saveToLocal.get('waline-newest-comments')
       if (data) {
         generateHtml(JSON.parse(data))
       } else {
@@ -528,7 +517,7 @@ queueMicrotask(() => {
 POWERMODE.shake = false;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);
-</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 var pjax = new Pjax({
   elements: 'a:not([target="_blank"])',
   selectors: pjaxSelectors,
